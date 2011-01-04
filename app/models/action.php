@@ -11,10 +11,6 @@
  	function __construct()
  	{
  		parent::__construct();
- 		$LiDb	=	new LDb();
- 		$this->ObDb	=	$LiDb->ObDb;
-// 		$this->ObDb
-// 		print_r($this->ObDb);
  	}
 /**
  * 添加新的活动到数据库

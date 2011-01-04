@@ -12,14 +12,14 @@
  /*
   *  网站基本配置配置
   */
- $CONFIG['baseurl'] 		= 'http://127.0.0.1/dblectureshare/';		//网站的的根URL,以/结尾
+ $CONFIG['baseurl'] 		= 'http://127.0.0.2/hzaucalendar/';		//网站的的根URL,以/结尾
  $CONFIG['default']			= 'index';									//默认访问控制器
  
  /*
   * 数据库相关配置
   */
  $CONFIG['db_host'] 		= 'localhost';		//数据库服务器地址
- $CONFIG['db_name'] 		= 'blueeon_dblectureshare';				//数据库名字
+ $CONFIG['db_name'] 		= 'hzaucalendar';				//数据库名字
  $CONFIG['db_user'] 		= 'root';				//数据库用户名
  $CONFIG['db_psw']			= '123';				//密码
  $CONFIG['db_tablepre']		= '';				//数据库表前缀，tablepre_
