@@ -1,0 +1,15 @@
+#en_listBOx{
+	background:red;
+	width:100%;
+	height:100px;
+}
+body{
+	overflow:scroll;
+}
+.en_right{
+	height:1.3em;
+	display:none;
+}
+.loading{
+	height:1.3em;
+}
