@@ -24,8 +24,12 @@
  	{
  		//连接数据库
 // 		echo $this->CONFIG[];
-		$this->ObDb = new LDb();
+		$LiDb	=	new LDb();
+ 		$this->ObDb	=	$LiDb->ObDb;
 // 		$this->ObDb->hello();
+ 	}
+ 	function __destruct()
+ 	{
  		
  	}
  	
