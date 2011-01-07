@@ -24,7 +24,6 @@
  			$temp.=	" , \'$value\'";
  		}
  		echo $temp;
- 		
  		$query = 'INSERT INTO `action` (`categoryId`, `keywords`, `title`, `icon`, `image`, `description`, `content`, `resouceurl`, `state`, `author`, `public_date`) 
 				 VALUES ("'.$Arr[category].'", "'.$Arr[keywords].'", "'.$Arr[title].'", "'.$Arr[Thumb].'", "'.$Arr[Img].'", "'.$Arr[description].'", "'.$Arr[content].'", "'.$Arr[resouceurl].'", \'publish\', \'blueeon\', "'.date('Y-m-j').'");';
 //		$sql = 'INSERT INTO `action` VALUES (NULL, \'关于萤火虫只是的讲座\', \'一次关于萤火虫只是的讲座\', \'2010-11-20\', \'2010-11-26\', \'南京市雨花台图书馆\', \'江苏省\', \'南京市\', \'2\', \'南京图书馆\', \'来的时候带好钱\', \'5\');";
