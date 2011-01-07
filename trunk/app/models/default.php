@@ -16,11 +16,11 @@
  	function __construct()
  	{
  		parent::__construct();
- 		$query = "SELECT * FROM  `category`";
- 		$result = mysql_query($query, $this->ObDb) or die(mysql_error());
- 		while($row=mysql_fetch_array($result))
-	    {    
-	    	print_r($row);
-	    }
+// 		$query = "SELECT * FROM  `category`";
+// 		$result = mysql_query($query, $this->ObDb) or die(mysql_error());
+// 		while($row=mysql_fetch_array($result))
+//	    {    
+//	    	print_r($row);
+//	    }
  	}
  }

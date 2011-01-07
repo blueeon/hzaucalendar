@@ -21,9 +21,10 @@
 // 		print_r($this->CONFIG);
  		$conn=mysql_connect($this->CONFIG['db_host'], $this->CONFIG['db_user'],$this->CONFIG['db_psw'])
 			or die('error');
-		mysql_query("set names $this->CONFIG['db_charset']");
+		
 		mysql_select_db($this->CONFIG['db_name']) //选择数据库mydb 
 		or die("数据库不存在或不可用");
+		mysql_query('set names '.$this->CONFIG['db_charset'],$conn);
 //		print_r($conn);
 		return $this->ObDb	=	$conn;
  		

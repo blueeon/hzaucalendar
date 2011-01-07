@@ -13,10 +13,12 @@
  	 * @var object
  	 */
  	protected $ObCommon;
+ 	protected $ObjValidate;
  	public  function __construct()
  	{
  		parent::__construct();
  		$ObjValidate = new LValidate;
+ 		$this->ObjValidate = $ObjValidate;
  		@$StrAct = $ObjValidate->AGet($_GET['act']);
  		$this->ObCommon = new LCommon;
  		
