@@ -17,15 +17,26 @@
  	{
  		parent::__construct();
  	}
+ 	/**
+ 	 * 增加一条feed
+ 	 * @param $ArrData 表单内容
+ 	 * @param $StrTag	tags
+ 	 */
  	function AddFeed($ArrData , $StrTag) {
  		$ArrData = $this->ArrRebuild($ArrData);
  		$query = 'INSERT INTO .`feeds` ('.$ArrData['key'].') VALUES ('.$ArrData['value'].');';
+ 		print_r($query);
  		$result = mysql_query($query, $this->ObDb) or die(mysql_error());
  		$result = mysql_query('SELECT LAST_INSERT_ID( )', $this->ObDb) or die(mysql_error());
  		$LastId = mysql_fetch_array($result);
  		$LastId = $LastId[0];
  		$StrTag = spliti(',', $StrTag);
+ 		$ArrTag = array();
  		foreach($StrTag as $value)
+ 		{
+ 			!in_array($value,$ArrTag) ? $ArrTag[] = $value : true;
+ 		}
+ 		foreach($ArrTag as $value)
  		{
  			if(trim($value))
  				$Str .= "('$LastId' , '$value'),";
