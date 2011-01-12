@@ -36,7 +36,7 @@ class CFeed extends LBaseController
  		;
  	}
  	function FeedList() {
- 		;
+ 		$this->MFeed->FeedList();
  	}
  	function FeedView() {
  		;
