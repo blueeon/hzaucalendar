@@ -25,7 +25,7 @@
  	function AddFeed($ArrData , $StrTag) {
  		$ArrData = $this->ArrRebuild($ArrData);
  		$query = 'INSERT INTO .`feeds` ('.$ArrData['key'].') VALUES ('.$ArrData['value'].');';
- 		print_r($query);
+// 		print_r($query);
  		$result = mysql_query($query, $this->ObDb) or die(mysql_error());
  		$result = mysql_query('SELECT LAST_INSERT_ID( )', $this->ObDb) or die(mysql_error());
  		$LastId = mysql_fetch_array($result);
@@ -43,7 +43,7 @@
  		}
  		$Str = rtrim($Str,',');
  		$query = 'INSERT INTO `feeds-tags` (fid,tag) VALUES '.$Str.';';
- 		print_r($query);
+// 		print_r($query);
  		$result = mysql_query($query, $this->ObDb) or die(mysql_error());
  		return true;
  	}
@@ -54,11 +54,22 @@
  		;
  	}
  	function FeedList() {
- 		;
+ 		$Arrreturn = array();
+ 		$query = "SELECT * FROM  `feeds` LIMIT 0 , 30";
+ 		$result = mysql_query($query, $this->ObDb) or die(mysql_error());
+ 		while ($row = mysql_fetch_array($result,MYSQL_ASSOC))
+ 		{
+ 			$Arrreturn[] = $row;
+ 		}
+ 		return $Arrreturn;
  	}
  	function FeedView() {
  		;
  	}
+ 	/**
+ 	 * 把数组转化为适合插入数据库的字符串
+ 	 * @param $ArrData
+ 	 */
  	function ArrRebuild($ArrData) {
  		$Arrreturn = array(key => '',value => '');
  		foreach($ArrData as $key => $value)
