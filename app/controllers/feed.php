@@ -22,7 +22,7 @@ class CFeed extends LBaseController
  		"year"	=>	$this->ObjValidate->APost($_POST['year']),
  		"month"	=>	$this->ObjValidate->APost($_POST['month']),
  		"day"	=>	$this->ObjValidate->APost($_POST['day']),
- 		"dateline"	=>	$this->ObjValidate->APost($_POST['dateline']),
+ 		"dateline"	=>	time(),
  		"content"	=>	$this->ObjValidate->APost($_POST['content'])
  		);
  		$StrTag = $this->ObjValidate->APost($_POST['tag']);
@@ -36,7 +36,8 @@ class CFeed extends LBaseController
  		;
  	}
  	function FeedList() {
- 		$this->MFeed->FeedList();
+ 		$ArrData = $this->MFeed->FeedList();
+ 		print_r($ArrData);
  	}
  	function FeedView() {
  		;
