@@ -8,10 +8,14 @@
  class LDeling
  {
  	protected $CONFIG = '';
+ 	protected $SETTING = '';
  	public function __construct()
  	{
  		//载入配置文件中的数据，并放入一个变量进行保存
  		require 'config/globalconfig.php';
+ 		require 'config/setting.php';
  		$this->CONFIG = $CONFIG;
+ 		$this->SETTING = $SETTING;
+ 		
  	}
  }
