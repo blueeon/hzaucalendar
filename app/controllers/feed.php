@@ -1,4 +1,4 @@
-<?php
+﻿<?php
  /**
  * feed管理
  * 
@@ -35,9 +35,22 @@ class CFeed extends LBaseController
  	function updateFeed() {
  		;
  	}
+ 	/**
+ 	 * 返回feed列表xml
+ 	 */
  	function FeedList() {
+ 		$xmlFeedList = '<?xml version="1.0" encoding="ISO-8859-1"?>';
  		$ArrData = $this->MFeed->FeedList();
- 		print_r($ArrData);
+ 		$xmlFeedList .= '<feedlist>';
+ 		foreach ($ArrData as $key => $value)
+ 		{
+ 			$xmlFeedList .= '<feed fid="'.$value['fid'].'" cid="'.$value['cid'].'" >' ;
+ 			$xmlFeedList .= '<content>'.$value['content'].'</content>';
+ 			$xmlFeedList .= '<date><year>'.$value['year'].'</year><month>'.$value['month'].'</month><day>'.$value['day'].'</day><dateline>'.$value['dateline'].'</dateline></date>' ;
+ 			$xmlFeedList .= '</feed>' ;
+ 		}
+ 		$xmlFeedList .= '</feedlist>';
+ 		echo $xmlFeedList;
  	}
  	function FeedView() {
  		;

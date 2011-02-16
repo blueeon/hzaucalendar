@@ -22,11 +22,12 @@
  	
  	function __construct()
  	{
- 		//连接数据库
+ 		parent::__construct();
 // 		echo $this->CONFIG[];
 		$LiDb	=	new LDb();
  		$this->ObDb	=	$LiDb->ObDb;
 // 		$this->ObDb->hello();
+
  	}
  	function __destruct()
  	{

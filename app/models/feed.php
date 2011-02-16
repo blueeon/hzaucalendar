@@ -16,6 +16,7 @@
  	function __construct()
  	{
  		parent::__construct();
+ 		
  	}
  	/**
  	 * 增加一条feed
@@ -55,7 +56,7 @@
  	}
  	function FeedList() {
  		$Arrreturn = array();
- 		$query = "SELECT * FROM  `feeds` LIMIT 0 , 30";
+ 		$query = "SELECT * FROM  `feeds` LIMIT 0 , ".$this->SETTING['page_feed_num'];
  		$result = mysql_query($query, $this->ObDb) or die(mysql_error());
  		while ($row = mysql_fetch_array($result,MYSQL_ASSOC))
  		{
