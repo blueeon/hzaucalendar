@@ -16,6 +16,5 @@
  		require 'config/setting.php';
  		$this->CONFIG = $CONFIG;
  		$this->SETTING = $SETTING;
- 		
  	}
  }

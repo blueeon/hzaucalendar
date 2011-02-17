@@ -54,14 +54,22 @@
  	function updateFeed() {
  		;
  	}
- 	function FeedList() {
+ 	function FeedList($IntPage) {
+ 		$IntPage = (int)$IntPage ;
+ 		if($IntPage < 1 || !is_int($IntPage))
+ 			$IntPage = 1 ;
  		$Arrreturn = array();
- 		$query = "SELECT * FROM  `feeds` LIMIT 0 , ".$this->SETTING['page_feed_num'];
+ 		$IntRow = mysql_num_rows(mysql_query('SELECT * FROM feeds' , $this->ObDb));
+ 		$query = 'SELECT * FROM  `feeds` LIMIT '.($IntPage-1)*$this->SETTING['page_feed_num'].' , '.$this->SETTING['page_feed_num'];
  		$result = mysql_query($query, $this->ObDb) or die(mysql_error());
+// 		$Arrreturn['total'] = array( 	"page"	=>	$IntPage,
+// 										"total"	=>	$IntRow		);
+ 		
  		while ($row = mysql_fetch_array($result,MYSQL_ASSOC))
  		{
  			$Arrreturn[] = $row;
  		}
+ 		
  		return $Arrreturn;
  	}
  	function FeedView() {

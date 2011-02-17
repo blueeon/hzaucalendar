@@ -1,4 +1,4 @@
-﻿<?php 
+<?php 
 /**
  * 这个是用来进行初始化的文件
  * 
@@ -10,7 +10,6 @@
   * 自动加载
   * @param $classname
   */
-
  function __autoload($StrClassName) {
  	//自动加载/lib、/app/controllers目录下的类
  	$StrFileName = strtolower(substr($StrClassName,1));	
@@ -33,5 +32,4 @@
  include_once './app/controllers/'.$StrCFileName.'.php';
  $StrCClassName =  'C'. ucwords($StrCFileName);
  return new $StrCClassName;
-
 /* End of file  */

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * content模型，封装关于有关content操作的业务逻辑
  * 
