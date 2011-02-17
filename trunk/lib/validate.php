@@ -1,4 +1,4 @@
-﻿<?php 
+<?php 
 /**
  * 封装了一些数据过滤验证处理的方法
  * 
@@ -42,5 +42,4 @@
 	 	echo 'hello world.';
 	 }
  }
- 
 /* End of file  */

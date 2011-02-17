@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /* End of file  */
  class CContent extends LBaseController
  {

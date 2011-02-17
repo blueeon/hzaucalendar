@@ -8,10 +8,8 @@
   * @var array
   */
  $SETTING = array();
- 
  /*
   * 分页设置
   */
  $SETTING['page_feed_num'] = 30;	//Feed 列表 每页数量
-	 
 //END

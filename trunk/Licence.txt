@@ -1,2 +1,2 @@
-此份代码以Apache Licence 2.0协议发布
+﻿此份代码以Apache Licence 2.0协议发布
 联系：blueeon@blueeon.net
