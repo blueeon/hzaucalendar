@@ -13,8 +13,6 @@ class CFeed extends LBaseController
  	{
  		$this->LoadModel('MFeed');
  		parent::__construct();
-// 		echo '这里是首页<br />';
-// 		$this->MAction->Hello();
  	}
  	function AddFeed() {
  		$ArrData = array(
@@ -44,7 +42,7 @@ class CFeed extends LBaseController
  		$xmlFeedList .= '<feedlist total = "">';
  		foreach ($ArrData as $key => $value)
  		{
- 			$xmlFeedList .= '<feed fid="'.$value['fid'].'" cid="'.$value['cid'].'" >' ;
+ 			$xmlFeedList .= '<feed fid="'.$value['fid'].'" cid="'.$value['cid'].'" cname="'.$value['cname'].'">' ;
  			$xmlFeedList .= '<content>'.$value['content'].'</content>';
  			$xmlFeedList .= '<date><year>'.$value['year'].'</year><month>'.$value['month'].'</month><day>'.$value['day'].'</day><dateline>'.$value['dateline'].'</dateline></date>' ;
  			$xmlFeedList .= '</feed>' ;
@@ -55,5 +53,31 @@ class CFeed extends LBaseController
  	}
  	function FeedView() {
  		;
+ 	}
+ 	function TagList()
+ 	{
+ 		$xmlTagList = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
+ 		$ArrData = $this->MFeed->TagList($this->ObjValidate->APost($_GET['num']));
+ 		$xmlTagList .= '<taglist total = "'.count($ArrData).'">';
+ 		$tempArr = array();
+ 		foreach ($ArrData as $key => $value)
+ 		{
+ 			$tempArr[] = $value['count'];
+ 		}
+ 		
+ 		foreach ($ArrData as $key => $value)
+ 		{
+ 			if(rand(0,40)<4)
+ 				$xmlTagList .= '<tag type="max">' ;
+ 			else 
+ 				$xmlTagList .= '<tag>' ;
+ 			$xmlTagList .= '<content>'.$value['tag'].'</content>';
+ 			$xmlTagList .= '<count>'.$value['count'].'</count>' ;
+ 			$xmlTagList .= '</tag>' ;
+ 		}
+ 		$xmlTagList .= '</taglist>';
+ 		header("Content-type: text/xml");
+ 		echo $xmlTagList;
+//print_r($ArrData);
  	}
  }

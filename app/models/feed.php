@@ -58,19 +58,19 @@
  		$IntPage = (int)$IntPage ;
  		if($IntPage < 1 || !is_int($IntPage))
  			$IntPage = 1 ;
- 		$Arrreturn = array();
+ 		$ArrReturn = array();
  		$IntRow = mysql_num_rows(mysql_query('SELECT * FROM feeds' , $this->ObDb));
- 		$query = 'SELECT * FROM  `feeds` LIMIT '.($IntPage-1)*$this->SETTING['page_feed_num'].' , '.$this->SETTING['page_feed_num'];
+ 		$query = 'SELECT a.* ,b.cname FROM  `feeds` as a ,`category` as b WHERE a.cid = b.cid LIMIT '.($IntPage-1)*$this->SETTING['page_feed_num'].' , '.$this->SETTING['page_feed_num'];
  		$result = mysql_query($query, $this->ObDb) or die(mysql_error());
 // 		$Arrreturn['total'] = array( 	"page"	=>	$IntPage,
 // 										"total"	=>	$IntRow		);
  		
  		while ($row = mysql_fetch_array($result,MYSQL_ASSOC))
  		{
- 			$Arrreturn[] = $row;
+ 			$ArrReturn[] = $row;
  		}
  		
- 		return $Arrreturn;
+ 		return $ArrReturn;
  	}
  	function FeedView() {
  		;
@@ -89,5 +89,27 @@
  		$Arrreturn['key'] = rtrim($Arrreturn['key'],',');
  		$Arrreturn['value'] = rtrim($Arrreturn['value'],',');
  		return $Arrreturn;
+ 	}
+ 	/**
+ 	 * 返回tag列表以及tag出现次数
+ 	 * @param $IntNum	返回的tag数量
+ 	 */
+ 	function TagList($IntNum)
+ 	{	
+ 		$IntNum = (int)$IntNum ;
+ 		if($IntNum < 1 || !is_int($IntNum))
+ 			$IntNum = 30 ;
+ 		$ArrTags = array();
+ 		$query = 'SELECT count(*) as count,tag 
+ 					FROM `feeds-tags` 
+ 					group by tag 
+ 					order by count DESC
+ 					limit 0,'.$IntNum.';';
+ 		$result = mysql_query($query, $this->ObDb) or die(mysql_error());
+ 		while ($row = mysql_fetch_array($result,MYSQL_ASSOC))
+ 		{
+ 			$ArrTags[] = $row;
+ 		}
+ 		return $ArrTags;	
  	}
  }
