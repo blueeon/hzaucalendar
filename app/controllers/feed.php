@@ -38,7 +38,7 @@ class CFeed extends LBaseController
  	 */
  	function FeedList() {
 		$xmlFeedList = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
- 		$ArrData = $this->MFeed->FeedList($this->ObjValidate->APost($_GET['page']));
+ 		$ArrData = $this->MFeed->FeedList($this->ObjValidate->APost($_GET['page']) , $this->ObjValidate->APost($_GET['num']));
  		$xmlFeedList .= '<feedlist total = "">';
  		foreach ($ArrData as $key => $value)
  		{
