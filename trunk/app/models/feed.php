@@ -54,13 +54,14 @@
  	function updateFeed() {
  		;
  	}
- 	function FeedList($IntPage) {
+ 	function FeedList($IntPage , $IntNum=0) {
  		$IntPage = (int)$IntPage ;
  		if($IntPage < 1 || !is_int($IntPage))
  			$IntPage = 1 ;
  		$ArrReturn = array();
+ 		$IntNum = $IntNum!=0 ? $IntNum : $this->SETTING['page_feed_num'] ;
  		$IntRow = mysql_num_rows(mysql_query('SELECT * FROM feeds' , $this->ObDb));
- 		$query = 'SELECT a.* ,b.cname FROM  `feeds` as a ,`category` as b WHERE a.cid = b.cid LIMIT '.($IntPage-1)*$this->SETTING['page_feed_num'].' , '.$this->SETTING['page_feed_num'];
+ 		$query = 'SELECT a.* ,b.cname FROM  `feeds` as a ,`category` as b WHERE a.cid = b.cid LIMIT '.($IntPage-1)*$IntNum.' , '.$IntNum;
  		$result = mysql_query($query, $this->ObDb) or die(mysql_error());
 // 		$Arrreturn['total'] = array( 	"page"	=>	$IntPage,
 // 										"total"	=>	$IntRow		);
